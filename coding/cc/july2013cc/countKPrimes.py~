@@ -1,0 +1,29 @@
+#!/usr/bin/python
+
+import math
+
+
+
+primelist=sieve_of_eratosthenes(100000)
+
+#print primelist
+
+T=int(raw_input())
+
+for i in xrange(1,T+1):
+	input=map(lambda x:int(x),raw_input().split(" "))
+	A=input[0]
+	B=input[1]
+	K=input[2]
+	sol=0
+	#print "#"+str(i)
+	for num in xrange(A,B+1):
+		primeFactors=0
+		#print num
+		for divisor in primelist:
+			if(num%divisor==0):
+				primeFactors=primeFactors+1
+		if(primeFactors==K):
+			sol=sol+1
+	print sol
+	
