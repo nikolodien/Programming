@@ -138,17 +138,42 @@ void display(){
 	printf("\n");
 }
 
+int reorder(node *head,node **temp){
+        if(head!=NULL){
+            // INSERT
+            if(reorder(head->next,temp)){
+						return;
+	    			}
+            if((*(temp))!=head && (*(temp))->next!=head){
+                head->next=(*(temp))->next;
+                (*(temp))->next=head;
+                (*temp)=head->next;
+            }else{
+                head->next=NULL;
+		return 1;
+            }
+        }
+	return 0;
+}
+
+void reorderList(node *head) {
+        // IMPORTANT: Please reset any member data you declared, as
+        // the same Solution instance will be reused for each test case.
+        node *temp = head;
+        reorder(head,&temp);   
+}
+
 int main(int argc, char* argv){
-	insert(1,1);display();
-	insert(2,1);display();
-	insert(100,1);display();
-	reverse();display();
-	insert(2,3);display();
-	insert(4,4);display();
-	insert(5,5);display();
-	printf("Recursively reverse\n");
-	rec_reverse(head);display();
-	printf("Pairwise reverse\n");
-	head=pair_reverse(head);display();
+	add(1);display();
+	add(2);display();
+	add(3);display();
+	add(4);display();
+	add(5);display();
+	add(6);display();
+	add(7);display();
+	add(8);display();
+	add(9);display();
+	reorderList(head);
+	display();
 	return 0;
 }
