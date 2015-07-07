@@ -1,0 +1,17 @@
+T=input()
+while(T>0):
+	N=input()
+	ss=sorted(map(int,raw_input().split(" ")),reverse=True)
+	as=sorted(map(int,raw_input().split(" ")),reverse=True)
+	possible=False
+	for(i=0;i<ss.size();i++):
+		if(as[i]<ss[i]):
+			continue
+		else:
+			possible=True
+			break;
+	if(possible)
+		print "YES"
+	else:
+		print "NO"
+	T=T-1
